@@ -1,9 +1,9 @@
 import { Head, Link, usePage } from '@inertiajs/react';
-import { dashboard } from '@/routes';
+import { motion, type Variants } from 'framer-motion';
 import { useState } from 'react';
 import { AuthModal } from '@/components/auth-modal';
 import { AnimatedBackground } from '@/components/ui/animated-background';
-import { motion, type Variants } from 'framer-motion';
+import { dashboard } from '@/routes';
 
 const containerVariants: Variants = {
     hidden: { opacity: 0 },

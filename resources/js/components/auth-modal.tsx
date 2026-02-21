@@ -1,19 +1,8 @@
 import { Form } from '@inertiajs/react';
-import { REGEXP_ONLY_DIGITS } from 'input-otp';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Input } from '@/components/ui/input';
-import {
-    InputOTP,
-    InputOTPGroup,
-    InputOTPSlot,
-} from '@/components/ui/input-otp';
-import { Label } from '@/components/ui/label';
-import { Spinner } from '@/components/ui/spinner';
-import { store } from '@/routes/login';
-import { sendCode } from '@/routes/register';
 import {
     Dialog,
     DialogContent,
@@ -21,9 +10,11 @@ import {
     DialogHeader,
     DialogTitle,
 } from '@/components/ui/dialog';
-import { motion, AnimatePresence } from 'framer-motion';
-
-const OTP_LENGTH = 6;
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Spinner } from '@/components/ui/spinner';
+import { store } from '@/routes/login';
+import { sendCode } from '@/routes/register';
 
 type AuthModalProps = {
     isOpen: boolean;
@@ -33,7 +24,6 @@ type AuthModalProps = {
 
 export function AuthModal({ isOpen, onOpenChange, initialView = 'login' }: AuthModalProps) {
     const [view, setView] = useState<'login' | 'register'>(initialView);
-    const [otpCode, setOtpCode] = useState('');
 
     const title = view === 'login' ? 'Log in to your account' : 'Create an account';
     const description = view === 'login'

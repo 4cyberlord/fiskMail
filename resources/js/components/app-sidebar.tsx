@@ -1,5 +1,5 @@
-import { Link } from '@inertiajs/react';
-import { LayoutGrid } from 'lucide-react';
+import { Link, usePage } from '@inertiajs/react';
+import { Bell, ClipboardList, LayoutGrid, Package, Users } from 'lucide-react';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
 import {
@@ -11,19 +11,31 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import type { NavItem } from '@/types';
-import AppLogo from './app-logo';
 import { dashboard } from '@/routes';
-
-const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-    },
-];
+import admin from '@/routes/admin';
+import student from '@/routes/student';
+import type { NavItem } from '@/types';
+import type { Auth } from '@/types';
+import AppLogo from './app-logo';
 
 export function AppSidebar() {
+    const page = usePage();
+    const auth = (page.props.auth ?? {}) as Auth;
+    const pathname = new URL(page.url, 'http://localhost').pathname;
+    const isAdminArea = pathname.startsWith('/admin');
+    const showAdminNav = auth.isAdmin === true || isAdminArea;
+
+    const mainNavItems: NavItem[] = [
+        { title: 'Dashboard', href: dashboard(), icon: LayoutGrid },
+        ...(showAdminNav
+            ? [
+                  { title: 'Students', href: admin.students.url(), icon: Users },
+                  { title: 'Receive Mail', href: admin.receiveMail.url(), icon: Package },
+                  { title: 'Pickup Desk', href: admin.pickupDesk.url(), icon: ClipboardList },
+              ]
+            : [{ title: 'Notifications', href: student.notifications.index.url(), icon: Bell }]),
+    ];
+
     return (
         <Sidebar collapsible="icon" variant="inset">
             <SidebarHeader>

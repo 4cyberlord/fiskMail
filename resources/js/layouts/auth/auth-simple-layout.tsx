@@ -1,8 +1,8 @@
 import { Link } from '@inertiajs/react';
-import type { AuthLayoutProps } from '@/types';
-import { home } from '@/routes';
-import { AnimatedBackground } from '@/components/ui/animated-background';
 import { motion } from 'framer-motion';
+import { AnimatedBackground } from '@/components/ui/animated-background';
+import { home } from '@/routes';
+import type { AuthLayoutProps } from '@/types';
 
 export default function AuthSimpleLayout({
     children,

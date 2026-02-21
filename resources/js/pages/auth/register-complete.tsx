@@ -21,7 +21,7 @@ type Props = {
     email: string;
 };
 
-export default function RegisterComplete({ name, email }: Props) {
+export default function RegisterComplete({ name }: Props) {
     const [phoneValue, setPhoneValue] = useState('');
 
     return (

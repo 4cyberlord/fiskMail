@@ -3,6 +3,10 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
+beforeEach(function (): void {
+    $this->markTestSkipped('Password settings page has been removed from the application.');
+});
+
 test('password update page is displayed', function () {
     $user = User::factory()->create();
 
