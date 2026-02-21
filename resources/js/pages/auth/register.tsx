@@ -19,12 +19,12 @@ export default function Register() {
             <Form
                 {...sendCode.form()}
                 disableWhileProcessing
-                className="flex flex-col gap-6"
+                className="flex flex-col gap-8"
             >
                 {({ processing, errors }) => (
                     <>
-                        <div className="grid gap-6">
-                            <div className="grid gap-2">
+                        <div className="grid gap-8">
+                            <div className="grid gap-3">
                                 <Label htmlFor="name">Name</Label>
                                 <Input
                                     id="name"
@@ -42,7 +42,7 @@ export default function Register() {
                                 />
                             </div>
 
-                            <div className="grid gap-2">
+                            <div className="grid gap-3">
                                 <Label htmlFor="email">Email address</Label>
                                 <Input
                                     id="email"
@@ -58,7 +58,7 @@ export default function Register() {
 
                             <Button
                                 type="submit"
-                                className="mt-2 w-full"
+                                className="mt-2 w-full bg-gradient-to-r from-orange-500 to-rose-600 hover:opacity-90 border-0 text-white shadow-lg shadow-rose-500/20 transition-all hover:scale-[1.02] active:scale-95"
                                 tabIndex={3}
                                 data-test="register-send-code-button"
                             >

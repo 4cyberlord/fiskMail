@@ -53,15 +53,15 @@ export default function Login({
 
             <Form
                 {...store.form()}
-                className="flex flex-col gap-6"
+                className="flex flex-col gap-8"
                 resetOnSuccess={!showOtpStep ? ['otp_code'] : undefined}
             >
                 {({ processing, errors }) => (
                     <>
-                        <div className="grid gap-6">
+                        <div className="grid gap-8">
                             {!showOtpStep ? (
                                 <>
-                                    <div className="grid gap-2">
+                                    <div className="grid gap-3">
                                         <Label htmlFor="email">Email address</Label>
                                         <Input
                                             id="email"
@@ -77,7 +77,7 @@ export default function Login({
                                     </div>
                                     <Button
                                         type="submit"
-                                        className="mt-4 w-full"
+                                        className="mt-4 w-full bg-gradient-to-r from-orange-500 to-rose-600 hover:opacity-90 border-0 text-white shadow-lg shadow-rose-500/20 transition-all hover:scale-[1.02] active:scale-95"
                                         tabIndex={2}
                                         disabled={processing}
                                         data-test="login-button"
@@ -93,9 +93,9 @@ export default function Login({
                                         name="email"
                                         value={otpEmail ?? ''}
                                     />
-                                    <div className="grid gap-2">
+                                    <div className="grid gap-3">
                                         <Label htmlFor="otp_code">Verification code</Label>
-                                        <div className="flex justify-center">
+                                        <div className="flex justify-center mt-2">
                                             <InputOTP
                                                 name="otp_code"
                                                 maxLength={OTP_LENGTH}
@@ -129,7 +129,7 @@ export default function Login({
                                     </div>
                                     <Button
                                         type="submit"
-                                        className="mt-4 w-full"
+                                        className="mt-4 w-full bg-gradient-to-r from-orange-500 to-rose-600 hover:opacity-90 border-0 text-white shadow-lg shadow-rose-500/20 transition-all hover:scale-[1.02] active:scale-95"
                                         tabIndex={4}
                                         disabled={processing || otpCode.length !== OTP_LENGTH}
                                         data-test="verify-otp-button"
